@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  K8S_STATEFUL_SET_NAME: likeminds-pingdatasync
+  K8S_STATEFUL_SET_SERVICE_NAME: likeminds-pingdatasync-cluster
+  LDAPS_PORT: "1636"
+  LDAP_PORT: "1389"
+  HTTPS_PORT: "1443"
+  ORCHESTRATION_TYPE: KUBERNETES
+  SERVER_PROFILE_PATH: serverProfile/pingdatasync
+  SERVER_PROFILE_URL: https://github.com/lmc-inc/directorypoc.git
+  ODSEE_SERVER: "20.242.14.254"
+  ODSEE_TM_PORT: "1389"
+  ODSEE_UNIX_PORT: "2389"
+  USER_BASE_DN: "dc=example,dc=com"
+  
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: pingdatasync
+  name: likeminds-pingdatasync-env-vars

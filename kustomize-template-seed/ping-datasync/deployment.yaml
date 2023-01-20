@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: pingdatasync
+  name: likeminds-pingdatasync
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: likeminds
+      app.kubernetes.io/name: pingdatasync
+  serviceName: likeminds-pingdatasync-cluster
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: likeminds
+        app.kubernetes.io/name: pingdatasync
+        clusterIdentifier: likeminds-pingdatasync
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: likeminds-global-env-vars
+            optional: true
+        - configMapRef:
+            name: likeminds-env-vars
+            optional: true
+        - configMapRef:
+            name: likeminds-pingdatasync-env-vars
+        - secretRef:
+            name: devops-secret
+            optional: true
+        - secretRef:
+            name: likeminds-pingdatasync-git-secret
+            optional: true
+        image: pingidentity/pingdatasync:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /opt/liveness.sh
+          failureThreshold: 4
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: pingdatasync
+        ports:
+        - containerPort: 1443
+          name: https
+        - containerPort: 1636
+          name: ldaps
+        readinessProbe:
+          exec:
+            command:
+            - /opt/readiness.sh
+          failureThreshold: 4
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 2
+            memory: 2Gi
+          requests:
+            cpu: 0
+            memory: .75Gi
+        startupProbe:
+          exec:
+            command:
+            - /opt/liveness.sh
+          failureThreshold: 90
+          periodSeconds: 10
+          timeoutSeconds: 5
+        volumeMounts:
+        - mountPath: /opt/out
+          name: out-dir
+      enableServiceLinks: true
+      securityContext:
+        fsGroup: 0
+        runAsGroup: 0
+        runAsUser: 9031
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: out-dir
+        persistentVolumeClaim:
+          claimName: out-dir
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate
+  volumeClaimTemplates:
+  - metadata:
+      name: out-dir
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 4Gi

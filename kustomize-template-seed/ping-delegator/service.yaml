@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: pingdelegator
+  name: likeminds-pingdelegator
+spec:
+  ports:
+  - name: https
+    port: 1443
+    protocol: TCP
+    targetPort: 1443
+  selector:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: pingdelegator
+  type: LoadBalancer
+  externalTrafficPolicy: Local

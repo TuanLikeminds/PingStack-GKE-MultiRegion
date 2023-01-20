@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: pingdelegator
+  name: likeminds-pingdelegator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: likeminds
+      app.kubernetes.io/name: pingdelegator
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: likeminds
+        app.kubernetes.io/name: pingdelegator
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: likeminds-global-env-vars
+            optional: true
+        - configMapRef:
+            name: likeminds-env-vars
+            optional: true
+        - configMapRef:
+            name: likeminds-pingdelegator-env-vars
+        - secretRef:
+            name: devops-secret
+            optional: true
+        - secretRef:
+            name: likeminds-pingdelegator-git-secret
+            optional: true
+        image: pingidentity/pingdelegator:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /opt/liveness.sh
+          failureThreshold: 4
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: pingdelegator
+        ports:
+        - containerPort: 1443
+          name: https
+        readinessProbe:
+          exec:
+            command:
+            - /opt/readiness.sh
+          failureThreshold: 4
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 500m
+            memory: 64Mi
+          requests:
+            cpu: 0
+            memory: 32Mi
+        startupProbe:
+          exec:
+            command:
+            - /opt/liveness.sh
+          failureThreshold: 90
+          periodSeconds: 10
+          timeoutSeconds: 5
+        volumeMounts: null
+      enableServiceLinks: true
+      securityContext:
+        fsGroup: 0
+        runAsGroup: 0
+        runAsUser: 9031
+      terminationGracePeriodSeconds: 30

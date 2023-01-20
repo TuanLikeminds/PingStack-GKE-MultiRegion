@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+  labels:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: pingdatasync
+  name: likeminds-pingdatasync-cluster
+spec:
+  clusterIP: None
+  ports:
+  - name: ldaps
+    port: 1636
+    protocol: TCP
+  publishNotReadyAddresses: true
+  selector:
+    clusterIdentifier: likeminds-pingdatasync
+  type: ClusterIP

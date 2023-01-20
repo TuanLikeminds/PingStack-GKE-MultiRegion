@@ -1,0 +1,14 @@
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: devops-secret
+  annotations:
+    pingctl.user: tuan@likemindsconsulting.com
+    pingctl.app-version: v1.0.4
+type: Opaque
+data:
+  PING_IDENTITY_DEVOPS_USER: dHVhbkBsaWtlbWluZHNjb25zdWx0aW5nLmNvbQ==
+  PING_IDENTITY_DEVOPS_KEY: MGIwMTQxMTUtNWM1Yi00MzRhLTkxNGMtMmE1NzRiOGNiNmQz
+  PING_IDENTITY_ACCEPT_EULA: eWVz
+
