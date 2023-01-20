@@ -9,3 +9,4 @@ resources:
 - ping-delegator
 - pingfederate
 - global-env.yaml
+- devops-eval-key.yaml
