@@ -5,7 +5,7 @@ Seed Cluster:
 PingDirectory Location: West
 
 Secondary Cluster:
-PingDirectory Location: Eest
+PingDirectory Location: East
 
 What's included:
 pingdirectory
