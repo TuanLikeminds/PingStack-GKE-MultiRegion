@@ -1,0 +1,40 @@
+apiVersion: v1
+data:
+  PD_CONSOLE_PRIVATE_HOSTNAME: likeminds-pingdataconsole
+  PD_CONSOLE_PRIVATE_PORT_HTTPS: "8443"
+  PD_CONSOLE_PUBLIC_HOSTNAME: localhost
+  PD_CONSOLE_PUBLIC_PORT_HTTPS: "8443"
+  PD_DELEGATOR_PRIVATE_HOSTNAME: likeminds-pingdelegator
+  PD_DELEGATOR_PRIVATE_PORT_HTTPS: "1443"
+  PD_DELEGATOR_PUBLIC_HOSTNAME: delegator.likemindsdemo.com 
+  PD_DELEGATOR_PUBLIC_PORT_HTTPS: "1443"
+  PD_ENGINE_PRIVATE_HOSTNAME: likeminds-pingdirectory
+  PD_ENGINE_PRIVATE_PORT_HTTPS: "1443"
+  PD_ENGINE_PRIVATE_PORT_LDAP: "1389"
+  PD_ENGINE_PRIVATE_PORT_LDAPS: "1636"
+  PD_ENGINE_PUBLIC_HOSTNAME: directory.likemindsdemo.com
+  PD_ENGINE_PUBLIC_PORT_HTTPS: "1443"
+  PDP_ENGINE_PRIVATE_HOSTNAME: likeminds-pingdirectoryproxy
+  PDP_ENGINE_PRIVATE_PORT_HTTPS: "443"
+  PDP_ENGINE_PUBLIC_HOSTNAME: dataproxy.likemindsdemo.com
+  PDP_ENGINE_PUBLIC_PORT_HTTPS: "1443"
+  PDS_ENGINE_PRIVATE_HOSTNAME: likeminds-pingdatasync
+  PDS_ENGINE_PRIVATE_PORT_HTTPS: "443"
+  PDS_ENGINE_PUBLIC_HOSTNAME: localhost
+  PDS_ENGINE_PUBLIC_PORT_HTTPS: "1443"
+  PF_ADMIN_PRIVATE_HOSTNAME: likeminds-pingfederate-admin
+  PF_ADMIN_PRIVATE_PORT_HTTPS: "9999"
+  PF_ADMIN_PUBLIC_HOSTNAME: pf-admin.likemindsdemo.com
+  PF_ADMIN_PUBLIC_PORT_HTTPS: "9999"
+  PF_ENGINE_PRIVATE_HOSTNAME: likeminds-pingfederate
+  PF_ENGINE_PRIVATE_PORT_HTTPS: "1443"
+  PF_ENGINE_PUBLIC_HOSTNAME: sso.likemindsdemo.com
+  PF_ENGINE_PUBLIC_PORT_HTTPS: "1443"
+  PF_ENGINE_PUBLIC_PORT: "1443"
+  PING_IDENTITY_ACCEPT_EULA: YES
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: global
+  name: likeminds-global-env-vars

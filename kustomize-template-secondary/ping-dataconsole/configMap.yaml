@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  LDAPS_PORT: "1636"
+  PD_ENGINE_PRIVATE_HOSTNAME: likeminds-pingdirectory-cluster
+  ROOT_USER: administrator
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: pingdataconsole
+  name: likeminds-pingdataconsole-env-vars

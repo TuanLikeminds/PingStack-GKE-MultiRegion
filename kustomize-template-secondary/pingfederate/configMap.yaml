@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  CLUSTER_BIND_ADDRESS: NON_LOOPBACK
+  CLUSTER_NAME: likeminds
+  OPERATIONAL_MODE: STANDALONE
+  PF_ADMIN_PUBLIC_BASEURL: https://sso.likemindsdemo.com:1443
+  SERVER_PROFILE_PATH: serverProfile/pingfederate
+  SERVER_PROFILE_URL: https://github.com/lmc-inc/directorypoc.git
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: likeminds
+    app.kubernetes.io/name: pingfederate
+  name: likeminds-pingfederate-env-vars
