@@ -1,6 +1,0 @@
-# export.yaml
-kind: ServiceExport
-apiVersion: net.gke.io/v1
-metadata:
- namespace: ping-namespace
- name: likeminds-pingdirectoryproxy-cluster

@@ -9,9 +9,8 @@ resources:
 - ping-delegator
 - pingfederate
 - global-env.yaml
-#- external-dns
 - devops-eval-key.yaml
-
+- service-export
 
 
 
