@@ -18,7 +18,6 @@ externaldns
 
 #1 install the terraform modules for creating the underlying network infra
 #2 firewall rules for bi-directional communication between the two vpc should be configured
-#3 run the gcp commands to deploy the two gke clusters
-#4 install the ping clusters on both clusters using kustomize
+#3 install the ping clusters on both clusters using kustomize
 
 Tested!. works!
