@@ -13,9 +13,9 @@ data:
   K8S_CLUSTER: montreal
   K8S_CLUSTERS: toronto montreal
   K8S_POD_HOSTNAME_PREFIX: likeminds-pingdirectory-
-  K8S_POD_HOSTNAME_SUFFIX: .telus-gke-membership-montreal.global.likeminds-pingdirectory-cluster-montreal.ping-namespace.svc.clusterset.local.
+  K8S_POD_HOSTNAME_SUFFIX: .montreal-gke-cluster.global.likeminds-pingdirectory-cluster-montreal.ping-namespace.svc.clusterset.local.
   K8S_SEED_CLUSTER: toronto
-  K8S_SEED_HOSTNAME_SUFFIX: .telus-gke-membership.global.likeminds-pingdirectory-cluster.ping-namespace.svc.clusterset.local.
+  K8S_SEED_HOSTNAME_SUFFIX: .toronto-gke-cluster.global.likeminds-pingdirectory-cluster.ping-namespace.svc.clusterset.local.
 
 
 kind: ConfigMap
