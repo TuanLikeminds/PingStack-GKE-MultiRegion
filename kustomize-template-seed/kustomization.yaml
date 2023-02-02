@@ -8,6 +8,7 @@ resources:
 - ping-directory-proxy
 - ping-delegator
 - pingfederate
+- ping-namespace.yaml
 - global-env.yaml
 - devops-eval-key.yaml
 - service-export

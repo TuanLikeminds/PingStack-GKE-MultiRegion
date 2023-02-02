@@ -10,3 +10,4 @@ resources:
 - global-env.yaml
 - devops-eval-key.yaml
 - service-export
+- ping-namespace.yaml
