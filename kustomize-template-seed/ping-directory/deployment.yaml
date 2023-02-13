@@ -37,6 +37,7 @@ spec:
             name: likeminds-pingdirectory-git-secret
             optional: true
         image: pingidentity/pingdirectory:latest
+        # image: northamerica-northeast1-docker.pkg.dev/pingdirectory-358917/likeminds-pingidentity-images/pingdirectory:9.2.0.0-latest
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
