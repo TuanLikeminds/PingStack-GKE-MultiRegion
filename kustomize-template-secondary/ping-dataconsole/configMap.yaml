@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   LDAPS_PORT: "1636"
-  PD_ENGINE_PRIVATE_HOSTNAME: likeminds-pingdirectory-cluster
+  PD_ENGINE_PRIVATE_HOSTNAME: likeminds-pingdirectory-cluster-montreal
   ROOT_USER: administrator
 kind: ConfigMap
 metadata:

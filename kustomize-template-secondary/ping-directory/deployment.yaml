@@ -12,7 +12,7 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: likeminds
       app.kubernetes.io/name: pingdirectory
-  serviceName: likeminds-pingdirectory-cluster
+  serviceName: likeminds-pingdirectory-cluster-montreal
   template:
     metadata:
       labels:

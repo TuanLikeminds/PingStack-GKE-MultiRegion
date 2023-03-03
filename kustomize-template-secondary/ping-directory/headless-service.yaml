@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: likeminds.east.demo.likemindscloud.com
+    # external-dns.alpha.kubernetes.io/hostname: likeminds.east.demo.likemindscloud.com
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
   labels:
     app.kubernetes.io/instance: likeminds
     app.kubernetes.io/name: pingdirectory
-  name: likeminds-pingdirectory-cluster
+  name: likeminds-pingdirectory-cluster-montreal
 spec:
   clusterIP: None
   ports:

@@ -9,4 +9,5 @@ resources:
 - pingfederate
 - global-env.yaml
 - devops-eval-key.yaml
-- external-dns
+- service-export
+- ping-namespace.yaml
