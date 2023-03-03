@@ -20,6 +20,16 @@ spec:
         app.kubernetes.io/name: pingdirectory
         clusterIdentifier: likeminds-pingdirectory
     spec:
+      serviceAccountName: ping-secrets-service-account
+      initContainers:
+      - image: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+        name: init-secrets-container
+        command: ["/scripts/entrypoint.sh"]
+        volumeMounts:
+        - mountPath: /scripts
+          name: pd-secrets-pull-script
+        - mountPath: /var/secrets
+          name: license-empty-dir
       containers:
       - envFrom:
         - configMapRef:
@@ -82,6 +92,8 @@ spec:
         volumeMounts:
         - mountPath: /opt/out
           name: out-dir
+        - mountPath: /opt/in/pd.profile/server-root/pre-setup/code kus  
+          name: license-empty-dir
       enableServiceLinks: true
       securityContext:
         fsGroup: 0
@@ -92,6 +104,12 @@ spec:
       - name: out-dir
         persistentVolumeClaim:
           claimName: out-dir
+      - name: pd-secrets-pull-script
+        configMap:
+         name: pd-secrets-pull-script
+         defaultMode: 0744
+      - name: license-empty-dir
+        emptyDir: {}
   updateStrategy:
     rollingUpdate:
       partition: 0

@@ -6,3 +6,6 @@ resources:
 - deployment.yaml
 - headless-service.yaml
 - service.yaml
+- secrets-map.yaml
+#- devops-eval-key.yaml
+- secrets-service-acc.yaml
