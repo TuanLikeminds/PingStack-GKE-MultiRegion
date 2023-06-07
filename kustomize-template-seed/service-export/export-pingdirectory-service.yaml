@@ -2,5 +2,5 @@
 kind: ServiceExport
 apiVersion: net.gke.io/v1
 metadata:
- namespace: ping-namespace
+ namespace: default
  name: likeminds-pingdirectory-cluster

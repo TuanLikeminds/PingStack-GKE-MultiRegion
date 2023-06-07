@@ -21,15 +21,15 @@ spec:
         clusterIdentifier: likeminds-pingdirectory
     spec:
       serviceAccountName: ping-secrets-service-account
-      initContainers:
-      - image: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-        name: init-secrets-container
-        command: ["/scripts/entrypoint.sh"]
-        volumeMounts:
-        - mountPath: /scripts
-          name: pd-secrets-pull-script
-        - mountPath: /var/secrets
-          name: license-empty-dir
+      # initContainers:
+      # - image: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+      #   name: init-secrets-container
+      #   command: ["/scripts/entrypoint.sh"]
+      #   volumeMounts:
+      #   - mountPath: /scripts
+      #     name: pd-secrets-pull-script
+      #   - mountPath: /var/secrets
+      #     name: license-empty-dir
       containers:
       - envFrom:
         - configMapRef:
@@ -46,7 +46,7 @@ spec:
         - secretRef:
             name: likeminds-pingdirectory-git-secret
             optional: true
-        image: pingidentity/pingdirectory:9.0.0.2-edge
+        image: pingidentity/pingdirectory:latest
         #docker pull pingidentity/pingdirectory:2209-9.0.0.2
         #docker pull pingidentity/pingdirectory:2302
         # image: northamerica-northeast1-docker.pkg.dev/pingdirectory-358917/likeminds-pingidentity-images/pingdirectory:9.2.0.0-latest
