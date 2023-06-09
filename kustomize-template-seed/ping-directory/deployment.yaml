@@ -20,7 +20,7 @@ spec:
         app.kubernetes.io/name: pingdirectory
         clusterIdentifier: likeminds-pingdirectory
     spec:
-      serviceAccountName: ping-secrets-service-account
+      # serviceAccountName: ping-secrets-service-account
       # initContainers:
       # - image: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
       #   name: init-secrets-container
